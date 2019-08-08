@@ -1,30 +1,39 @@
 <template>
-<el-row :gutter="10">
-  <el-col :xs="30" :sm="6" :md="4" :lg="24" :xl="10">
   <div class="box">
-    <div class="nav">
-      <el-col :xs="10" :sm="6" :md="4" :lg="10" :xl="10">
-      <ul class="location">
-        <li>大宗商品交易平台</li>
-      </ul>
-      </el-col>
-      <ul class="details">
-        <li class="first" v-show="!userInfo.userName">
-          欢迎您！  <router-link to="/Login"><i class="el-icon-user"></i> 登录</router-link>
-        </li>
-        <li v-show="!!userInfo.userName&&userInfo.userName!=='root'" >
-          欢迎您！ <router-link to=""> <i class="el-icon-s-custom"></i> {{userInfo.userName}}</router-link>
-        </li>
-        <li v-show="userInfo.userName!=='root'" ><router-link to="/"> 网站导航</router-link></li>
-        <li v-show="!!userInfo.userName&&userInfo.userName!=='root'" @click="MyCar"><router-link to=""><i class="el-icon-shopping-cart-2"></i> 进货单</router-link></li>
-        <li v-show="!!userInfo.userName" @click="signOutFun">
-          <router-link to=""> <i class="el-icon-caret-right"></i> 退出登录</router-link>
-        </li>
-        </ul>
+    <div class="test">
+      <el-row>
+        <el-col :xs="24" :sm="6" :md="4" :lg="12" :xl="12"><div id="logo">大宗商品交易平台</div></el-col>
+        <el-col :xs="12" :sm="6" :md="4" :lg="2" :xl="1">
+          <div  v-show="!userInfo.userName"><router-link to="/Login"><i class="el-icon-user"></i>登  录</router-link></div>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="4" :lg="2" :xl="1">
+          <div  v-show="!!userInfo.userName&&userInfo.userName!=='root'">
+            <router-link to=""> <i class="el-icon-s-custom"></i> {{userInfo.userName}}</router-link>
+          </div>
+        </el-col>
+        <el-col :xs="12" :sm="6" :md="4" :lg="2" :xl="1">
+          <div v-show="!userInfo.userName">
+            <router-link to="/"> 网站导航</router-link>
+          </div>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="4" :lg="2" :xl="1">
+          <div v-show="!!userInfo.userName">
+            <router-link to="/"> 网站导航</router-link>
+          </div>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="4" :lg="2" :xl="1">
+          <div v-show="!!userInfo.userName&&userInfo.userName!=='root'" @click="MyCar">
+            <router-link to=""><i class="el-icon-shopping-cart-2"></i> 进货单</router-link>
+          </div>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="4" :lg="2" :xl="1">
+          <div v-show="!!userInfo.userName" @click="signOutFun">
+            <router-link to=""> <i class="el-icon-caret-right"></i> 退出登录</router-link>
+          </div>
+        </el-col>
+      </el-row>
     </div>
   </div>
-  </el-col>
-</el-row>
 </template>
 
 <script>
@@ -111,8 +120,22 @@ export default {
 <style scoped>
 .box {
   width: 100%;
-  height: 50px;
   background-color: #4488a7;
+}
+.test {
+  color: #F8F8FF;
+  font-weight: bold;
+}
+.test #logo {
+  font-size: 1.8rem;
+  color: #F8F8FF;
+}
+.test a{
+  text-decoration: none;
+  color: #F8F8FF;
+  font-size: 1.05rem;
+  line-height: 3rem;
+  /*border: 1px solid #ccc;*/
 }
 .nav {
   margin: 0% auto;
@@ -145,7 +168,7 @@ export default {
   cursor: pointer;
 }
 .location li {
-  font-size:35px;
+  font-size: 1.5rem;
 }
 .nav a:hover {
   color: #d9534f;
