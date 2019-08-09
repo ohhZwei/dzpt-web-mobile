@@ -41,6 +41,5 @@ export default new Router({
       name: 'MyCar',
       component: MyCar
     }
-
   ]
 })

@@ -14,8 +14,6 @@
   "dependencies": {
     "axios": "^0.19.0",
     "element-ui": "^2.10.1",
-    "lib-flexible": "^0.3.2",
-    "px2rem-loader": "^0.1.9",
     "v-distpicker": "^1.2.1",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",
