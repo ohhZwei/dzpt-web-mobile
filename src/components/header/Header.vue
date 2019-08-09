@@ -2,31 +2,31 @@
   <div class="box">
     <div class="test">
       <el-row>
-        <el-col :xs="24" :sm="6" :md="4" :lg="12" :xl="12"><div id="logo">大宗商品交易平台</div></el-col>
-        <el-col :xs="12" :sm="6" :md="4" :lg="2" :xl="1">
+        <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"><div id="logo">大宗商品交易平台</div></el-col>
+        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
           <div  v-show="!userInfo.userName"><router-link to="/Login"><i class="el-icon-user"></i>登  录</router-link></div>
         </el-col>
-        <el-col :xs="6" :sm="6" :md="4" :lg="2" :xl="1">
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
           <div  v-show="!!userInfo.userName&&userInfo.userName!=='root'" @click="Mine()">
             <router-link to=""> <i class="el-icon-s-custom"></i> {{userInfo.userName}}</router-link>
           </div>
         </el-col>
-        <el-col :xs="12" :sm="6" :md="4" :lg="2" :xl="1">
+        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
           <div v-show="!userInfo.userName">
             <router-link to="/"> 网站导航</router-link>
           </div>
         </el-col>
-        <el-col :xs="6" :sm="6" :md="4" :lg="2" :xl="1">
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
           <div v-show="!!userInfo.userName">
             <router-link to="/"> 网站导航</router-link>
           </div>
         </el-col>
-        <el-col :xs="6" :sm="6" :md="4" :lg="2" :xl="1">
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
           <div v-show="!!userInfo.userName&&userInfo.userName!=='root'" @click="MyCar">
             <router-link to=""><i class="el-icon-shopping-cart-2"></i> 进货单</router-link>
           </div>
         </el-col>
-        <el-col :xs="6" :sm="6" :md="4" :lg="2" :xl="1">
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
           <div v-show="!!userInfo.userName" @click="signOutFun">
             <router-link to=""> <i class="el-icon-caret-right"></i> 退出登录</router-link>
           </div>

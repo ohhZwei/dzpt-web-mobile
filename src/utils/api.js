@@ -36,7 +36,7 @@ axios.interceptors.response.use(data => {
     if (err.response.data.msg) {
       Message.error({ message: err.response.data.msg })
     } else {
-      Message.error({ message: '未知错误!' })
+      // Message.error({ message: '未知错误!' })
     }
   }
   // return Promise.resolve(err);

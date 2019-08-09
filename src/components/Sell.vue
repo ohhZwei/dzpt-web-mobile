@@ -11,14 +11,14 @@
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#FFFAFA">
-            <el-menu-item index="1" style="font-size:1.5rem"><i class="el-icon-s-goods" style="heignt:20px"></i>卖方挂牌商品</el-menu-item>
+            <el-menu-item index="1" style="font-size:1.2rem"><i class="el-icon-s-goods"></i>卖方挂牌商品</el-menu-item>
           </el-menu>
         </div>
         <div>
           <el-table
             :data="tableData"
             style="width: 100%"
-            height="350"
+            max-height="20rem"
             :align="center">
             <el-table-column
               prop="createDate"
@@ -42,7 +42,7 @@
             </el-table-column>
             <el-table-column
               prop="supplierName"
-              label="挂单方姓名"
+              label="挂单方"
               align="center">
             </el-table-column>
 
@@ -78,26 +78,6 @@
         </div>
       </el-card>
     </div>
-    <el-dialog title="提醒他 我有货" :visible.sync="dialogFormVisible" :center="true">
-      <el-form :model="form" :inline="true" :rules="rules">
-        <el-form-item label="被提醒方姓名" prop="name" :label-width="formLabelWidth" >
-          <el-input v-model="form.name" disabled="" autocomplete="off" style="width:440px"></el-input>
-        </el-form-item>
-        <el-form-item label="您的商品信息" prop="listedGoodsId" :label-width="formLabelWidth" >
-          <el-input v-model="form.listedGoodsId" autocomplete="off" style="width:440px"></el-input>
-        </el-form-item>
-        <el-form-item >
-          <el-tag v-for="(item, index) in promotionTags" :key="index" style="margin-right:5px" @click="selectTags(index)">{{item}}</el-tag>
-        </el-form-item>
-        <el-form-item label="您的联系方式" :label-width="formLabelWidth">
-          <el-input  v-model="form.qq" autocomplete="off" style="width:440px" placeholder="QQ/微信/手机号（选填）"></el-input>
-        </el-form-item>
-      </el-form>
-       <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="commit(form)">确 定</el-button>
-          </div>
-    </el-dialog>
     </div>
 
 </template>
@@ -190,17 +170,6 @@ export default {
         console.log(error)
       })
     // 获取买家挂牌
-    this.getRequest('/hang/getBuyerHangList', this.params2)
-      .then((response) => {
-        for (const i in response.data.data.hangList) {
-          response.data.data.hangList[i].createDate = this.dateFormat(response.data.data.hangList[i].createDate)
-        }
-        console.log(response.data)
-        this.tableData1 = response.data.data.hangList
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
 
     // 获取我的挂牌
     this.promotionTags = []
@@ -261,25 +230,6 @@ export default {
     success () {
       this.dialogFormVisible = false
       //  alert("议价单已提交！")
-    },
-    chat (row, tableData1) {
-      if (this.userInfo.userId === row.supplier) {
-        this.$alert('你确定要联系自己吗~', '执行结果', {
-          confirmButtonText: '不联系了'
-        })
-        return false
-      } else {
-        if (this.count === 0) {
-          this.$alert('您还没有售出挂牌商品，无法进行联系！', '执行结果', {
-            confirmButtonText: '确定'
-          })
-        } else {
-          console.log('this21212')
-          this.dialogFormVisible = true
-          this.LXid = row.supplier
-          this.form.name = row.supplierName
-        }
-      }
     },
     commit (formName) {
       if (this.form.listedGoodsId === '') {
@@ -349,7 +299,8 @@ export default {
   margin-left: 12px;
 }
 .container {
-  margin: 2rem auto;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
   max-width: 1200px;
 }
 .content {

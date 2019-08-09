@@ -49,7 +49,7 @@ export default {
 }
 .servece-type {
   margin: 1rem auto;
-  height: 7rem;
+  height: 8rem;
   width: 70%;
   display: flex;
   flex-direction: row;
@@ -70,8 +70,8 @@ export default {
   line-height: 26px;
 }
 .servece-type-info li:first-child {
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 1rem;
+  line-height: 2rem;
   font-weight: bold;
 }
 .friend-link {

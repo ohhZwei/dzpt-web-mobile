@@ -10,9 +10,8 @@
               <h2>欢迎使用大宗商品交易平台</h2>
             </div>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm"
-                     class="demo-ruleForm"
-                     >
-              <el-form-item label="" prop="userName" style="margin-top:10px">
+                     class="demo-ruleForm">
+              <el-form-item label="" prop="userName" style="margin-top: 1rem">
                 <el-input v-model="ruleForm.userName" placeholder="请输入用户名"
                           prefix-icon="el-icon-user-solid"></el-input>
               </el-form-item>
@@ -131,8 +130,11 @@ export default {
           this.postRequest('/login', this.DATA).then((res) => {
             this.res1 = res.data
             console.log(res.data)
-
             if (this.res1.code === '1') {
+              this.$message({
+                message: '登陆成功',
+                type: 'success'
+              })
               if (this.ruleForm.userName === 'root') {
                 this.userData.userName = this.ruleForm.userName
                 this.login(this.userData)
@@ -193,24 +195,25 @@ export default {
 
 .freeback-container {
   margin: 2rem auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
+  padding: 0 2rem;
+  /*display: flex;*/
+  /*align-items: center;*/
   background-color: #eeeeee;
   font-weight: bold;
 }
 .freeback-box-border {
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+
 }
 .freeback-box {
+  margin: 0 auto;
+  min-width: 15rem;
+  max-width: 30rem;
 }
 .freback-content {
   background-color: #ffffff;
-  margin: 1rem auto;
   border-radius: 5px;
 }
 
