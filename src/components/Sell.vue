@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="container">
       <el-card shadow="hover">
         <div>
@@ -12,14 +11,14 @@
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#FFFAFA">
-            <el-menu-item index="1" style="font-size:22px"><i class="el-icon-s-goods" style="heignt:20px"></i>卖方挂牌商品</el-menu-item>
+            <el-menu-item index="1" style="font-size:1.5rem"><i class="el-icon-s-goods" style="heignt:20px"></i>卖方挂牌商品</el-menu-item>
           </el-menu>
         </div>
         <div>
           <el-table
             :data="tableData"
             style="width: 100%"
-            max-height="250"
+            height="350"
             :align="center">
             <el-table-column
               prop="createDate"
@@ -70,7 +69,7 @@
             <el-table-column
               fixed="right"
               label="操作"
-              width="100">
+              width="50">
               <template slot-scope="scope">
                 <el-button @click.native.prevent="buy(scope.row, tableData)" type="text" size="small"> 购买</el-button>
               </template>
@@ -79,83 +78,6 @@
         </div>
       </el-card>
     </div>
-
-    <div class="container">
-      <el-card shadow="hover">
-        <div>
-          <el-menu
-            :default-active="activeIndex2"
-            class="el-menu-demo"
-            mode="horizontal"
-            @select="handleSelect"
-            background-color="#800000"
-            text-color="#fff"
-            active-text-color="#ffd04b">
-            <el-menu-item index="1" style="font-size:22px"><i class="el-icon-s-goods" style="heignt:20px"></i>买方挂牌商品</el-menu-item>
-          </el-menu>
-        </div>
-        <div>
-          <el-table
-            :data="tableData1"
-            style="width: 100%"
-            max-height="250">
-            <el-table-column
-              prop="createDate"
-              label="挂牌日期"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="listedGoodsId"
-              label="挂牌号"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="goodsName"
-              label="商品名"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="supplier"
-              label="挂单方ID"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="supplierName"
-              label="挂单方姓名"
-              align="center">
-            </el-table-column>
-
-            <el-table-column
-              prop="amount"
-              label="需求数量"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="price"
-              label="接受价格"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="region"
-              label="商品来源"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="quality"
-              label="质量标准"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              fixed="right"
-              label="操作"
-              width="100">
-              <template slot-scope="scope">
-                <el-button @click="chat(scope.row, tableData)" type="text" size="small"> 联系一下</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-
     <el-dialog title="提醒他 我有货" :visible.sync="dialogFormVisible" :center="true">
       <el-form :model="form" :inline="true" :rules="rules">
         <el-form-item label="被提醒方姓名" prop="name" :label-width="formLabelWidth" >
@@ -176,8 +98,6 @@
             <el-button type="primary" @click="commit(form)">确 定</el-button>
           </div>
     </el-dialog>
-      </el-card>
-    </div>
     </div>
 
 </template>
@@ -429,8 +349,7 @@ export default {
   margin-left: 12px;
 }
 .container {
-  margin: 30px auto 0 auto;
-  padding-bottom: 20px;
+  margin: 2rem auto;
   max-width: 1200px;
 }
 .content {

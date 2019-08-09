@@ -10,21 +10,21 @@
               <h2>欢迎使用大宗商品交易平台</h2>
             </div>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm"
-                     label-width="100px"  class="demo-ruleForm"
+                     class="demo-ruleForm"
                      >
-              <el-form-item label="用户名" prop="userName" style="width: 450px;margin-top:10px">
-                <el-input v-model="ruleForm.userName"
+              <el-form-item label="" prop="userName" style="margin-top:10px">
+                <el-input v-model="ruleForm.userName" placeholder="请输入用户名"
                           prefix-icon="el-icon-user-solid"></el-input>
               </el-form-item>
-              <el-form-item label="登录密码" prop="password" style="width: 450px;">
-                <el-input v-model="ruleForm.password" show-password
+              <el-form-item label="" prop="password" style="">
+                <el-input v-model="ruleForm.password" show-password placeholder="请输入密码"
                           prefix-icon="el-icon-lock" @keyup.enter.native="submitForm('ruleForm')"></el-input>
               </el-form-item>
             </el-form>
           <br/>
             <div slot="footer">
-              <el-button type="primary" @click="submitForm('ruleForm')">登 录</el-button>
-              <el-button @click="resetForm('ruleForm')">重 置</el-button>
+              <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+              <el-button @click="resetForm('ruleForm')">重置</el-button>
             </div>
           </div>
         </el-card>
@@ -192,36 +192,25 @@ export default {
 <style scoped>
 
 .freeback-container {
-  margin: 0px auto;
+  margin: 2rem auto;
   width: 100%;
-  height: 500px;
   display: flex;
   align-items: center;
   background-color: #eeeeee;
-}
-.freeback-img-box {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.freeback-img-box img {
-  width: 80%;
+  font-weight: bold;
 }
 .freeback-box-border {
-  width: 50%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
 .freeback-box {
-  width: 630px;
 }
 .freback-content {
   background-color: #ffffff;
-  width:500px;
-  margin: 15px auto;
+  margin: 1rem auto;
   border-radius: 5px;
 }
 

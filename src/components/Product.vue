@@ -11,7 +11,7 @@
         <p>商品名称：{{info.goodsName}}</p>
         <p>挂牌时间：{{info.createDate}}</p>
       </div>
-      <div class="address-action">
+      <div class="back">
                <span @click="back()"><i class="el-icon-circle-close"></i></span>
       </div>
     </div>
@@ -302,8 +302,8 @@ export default {
   .Btn {
     margin-top: 50px
   }
-  .address-action span{
-  margin-left: 15px;
+  .back span{
+  margin-left: 50px;
   font-size: 20px;
   color: white;
   cursor: pointer;

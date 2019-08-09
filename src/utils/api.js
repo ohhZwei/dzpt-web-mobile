@@ -27,23 +27,23 @@ axios.interceptors.response.use(data => {
   // }
   return data
 }, err => {
-  if (err.response.status == 504 || err.response.status == 404) {
+  if (err.response.status === 504 || err.response.status === 404) {
     Message.error({ message: '服务器被吃了⊙﹏⊙∥' })
-  } else if (err.response.status == 403) {
+  } else if (err.response.status === 403) {
     Message.error({ message: '权限不足,请联系管理员!' })
-  } else if (err.response.status == 401) {
+  } else if (err.response.status === 401) {
     Message.error({ message: err.response.data.msg })
   } else {
     if (err.response.data.msg) {
       Message.error({ message: err.response.data.msg })
-    } else{
+    } else {
       Message.error({ message: '未知错误!' })
     }
   }
   // return Promise.resolve(err);
 })
 // const base = 'http://localhost:8080'
-const base = 'http://10.2.2.50:8080'
+const base = 'http://10.2.2.59:8080'
 // const qs = require('qs')
 export const getBaseUrl = () => {
   return base

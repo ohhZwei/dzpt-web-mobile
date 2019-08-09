@@ -3,7 +3,7 @@
   <el-table
     :data="tableData"
     border
-    max-height="600"
+    max-height="530"
     style="width: 100%">
     <el-table-column
       prop="createDate"
@@ -141,7 +141,7 @@ export default {
 
   margin: 20px 10px 5px 10px;
   border-radius: 5px;
-  height: 600px;
+  height: 530px;
   box-shadow: 0px 0px 10px #545c64;
 }
 </style>
