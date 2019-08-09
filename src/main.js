@@ -11,7 +11,6 @@ import VueAxios from 'vue-axios'
 import { dateFormat } from './utils/dateFormat'
 
 import { getRequest, postRequest, postFormRequest, getBaseUrl } from './utils/api'
-import { get } from 'https'
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false

@@ -170,17 +170,6 @@ export default {
         console.log(error)
       })
     // 获取买家挂牌
-    this.getRequest('/hang/getBuyerHangList', this.params2)
-      .then((response) => {
-        for (const i in response.data.data.hangList) {
-          response.data.data.hangList[i].createDate = this.dateFormat(response.data.data.hangList[i].createDate)
-        }
-        console.log(response.data)
-        this.tableData1 = response.data.data.hangList
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
 
     // 获取我的挂牌
     this.promotionTags = []
@@ -241,25 +230,6 @@ export default {
     success () {
       this.dialogFormVisible = false
       //  alert("议价单已提交！")
-    },
-    chat (row, tableData1) {
-      if (this.userInfo.userId === row.supplier) {
-        this.$alert('你确定要联系自己吗~', '执行结果', {
-          confirmButtonText: '不联系了'
-        })
-        return false
-      } else {
-        if (this.count === 0) {
-          this.$alert('您还没有售出挂牌商品，无法进行联系！', '执行结果', {
-            confirmButtonText: '确定'
-          })
-        } else {
-          console.log('this21212')
-          this.dialogFormVisible = true
-          this.LXid = row.supplier
-          this.form.name = row.supplierName
-        }
-      }
     },
     commit (formName) {
       if (this.form.listedGoodsId === '') {

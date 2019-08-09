@@ -7,7 +7,7 @@
           <div  v-show="!userInfo.userName"><router-link to="/Login"><i class="el-icon-user"></i>登  录</router-link></div>
         </el-col>
         <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
-          <div  v-show="!!userInfo.userName&&userInfo.userName!=='root'">
+          <div  v-show="!!userInfo.userName&&userInfo.userName!=='root'" @click="Mine()">
             <router-link to=""> <i class="el-icon-s-custom"></i> {{userInfo.userName}}</router-link>
           </div>
         </el-col>
@@ -94,10 +94,9 @@ export default {
     },
     Mine () {
       this.$router.push({
-        path: '/Mine/Personal',
-        name: 'Personal',
+        path: '/MyTrading',
+        name: 'MyTrading',
         params: {
-          // username: this.$route.params.username
           red: 'PER'
         }
       })
@@ -107,7 +106,6 @@ export default {
         path: '/Mine/MyCar',
         name: 'MyCar',
         params: {
-          // username: this.$route.params.username
           red: 'MC'
         }
       })

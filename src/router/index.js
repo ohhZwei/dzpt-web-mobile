@@ -6,6 +6,7 @@ import Sell from '@/components/Sell'
 const Login = resolve => require(['@/components/Login'], resolve)
 const Product = resolve => require(['@/components/Product'], resolve)
 const MyCar = resolve => require(['@/components/MyCar'], resolve)
+const MyTrading = resolve => require(['@/components/MyTrading'], resolve)
 
 Vue.use(Router)
 
@@ -40,7 +41,12 @@ export default new Router({
       path: '/MyCar',
       name: 'MyCar',
       component: MyCar
+    },
+    // 我的交易
+    {
+      path: '/MyTrading',
+      name: 'MyTrading',
+      component: MyTrading
     }
-
   ]
 })

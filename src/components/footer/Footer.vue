@@ -39,7 +39,7 @@ export default {
 <style scoped>
 .footer {
   width: 100%;
-  height: 14rem;
+  height: 13rem;
   margin-top: 0px;
   background-color: #4488a7;
 }
@@ -89,9 +89,6 @@ export default {
 .friend-link-item ul {
   padding-left: 0;
   list-style: none;
-}
-.friend-link-item li {
-
 }
 .link-item {
   padding: 0px 8px;

@@ -3,6 +3,7 @@
   <el-table
     :data="tableData"
     border
+    max-height="530"
     style="width: 100%">
     <el-table-column
       prop="createDate"
@@ -37,7 +38,8 @@
     <el-table-column
       fixed="right"
       label="操作"
-      width="120">
+      align="center"
+      width="70">
       <template slot-scope="scope">
             <el-button @click="buy(scope.row,scope.$index,tableData)" type="text" size="small">去购买</el-button>
             <el-button @click="del(scope.row,scope.$index,tableData)" type="text" size="small">删除</el-button>
@@ -139,7 +141,7 @@ export default {
 
   margin: 20px 10px 5px 10px;
   border-radius: 5px;
-  height: 600px;
+  height: 530px;
   box-shadow: 0px 0px 10px #545c64;
 }
 </style>
