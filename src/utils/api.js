@@ -36,14 +36,14 @@ axios.interceptors.response.use(data => {
   } else {
     if (err.response.data.msg) {
       Message.error({ message: err.response.data.msg })
-    } else{
-      Message.error({ message: '未知错误!' })
+    } else {
+      // Message.error({ message: '未知错误!' })
     }
   }
   // return Promise.resolve(err);
 })
 // const base = 'http://localhost:8080'
-const base = 'http://10.2.2.50:8080'
+const base = 'http://10.2.2.59:8080'
 // const qs = require('qs')
 export const getBaseUrl = () => {
   return base

@@ -49,17 +49,18 @@ export default {
 }
 .servece-type {
   margin: 1rem auto;
-  height: 140px;
+  height: 8rem;
   width: 70%;
   display: flex;
   flex-direction: row;
   text-align: center;
 }
 .servece-type-info {
+  margin: 0 auto;
   color: #F8F8FF;
 }
 .servece-type-info ul {
-  padding-left: 2rem;
+  padding: 0;
   margin: 0 auto;
   list-style: none;
 }
@@ -69,15 +70,15 @@ export default {
   line-height: 26px;
 }
 .servece-type-info li:first-child {
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 1rem;
+  line-height: 2rem;
   font-weight: bold;
 }
 .friend-link {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 30px;
+  height: 3rem;
   margin: 0px auto;
   color: #F8F8FF;
   border-top: 1px solid #b2dfdb;
