@@ -101,7 +101,10 @@ export default {
         listedGoodsId: '',
         price: ''
       },
-      total: ''
+      total: '',
+      CAR: {
+        userId: ''
+      }
     }
   },
   computed: {
@@ -200,25 +203,45 @@ export default {
         })
         return false
       } else {
-        this.addCar.userId = this.userInfo.userId
-        this.addCar.listedGoodsId = this.goodInfo.listedGoodsId
-        console.log(this.addCar)
-        this.postRequest('/mine/addMyCar', this.addCar).then((res) => {
-          console.log(res.data)
-          this.res1 = res.data
-          if (this.res1.code === '1') {
-            this.$message({
-              message: '加入进货单成功!',
-              type: 'success'
+        // 判断进货单中是否已经存在该商品
+        this.isLogin()
+        console.log(this.userInfo)
+        this.CAR.userId = this.userInfo.userId
+        this.getRequest('/mine/getMyCar', this.CAR)
+          .then((response) => {
+            for (const i in response.data.data.goodsList) {
+              if (response.data.data.goodsList[i].listedGoodsId === this.goodInfo.listedGoodsId) {
+                this.$message({
+                  message: '进货单中已存在该商品，请勿重复添加!',
+                  type: 'error'
+                })
+                return false
+              }
+            }
+
+            this.addCar.userId = this.userInfo.userId
+            this.addCar.listedGoodsId = this.goodInfo.listedGoodsId
+            console.log(this.addCar)
+            this.postRequest('/mine/addMyCar', this.addCar).then((res) => {
+              console.log(res.data)
+              this.res1 = res.data
+              if (this.res1.code === '1') {
+                this.$message({
+                  message: '加入进货单成功!',
+                  type: 'success'
+                })
+              } else {
+                this.$message({
+                  message: '加入进货单失败!',
+                  type: 'error'
+                })
+                return false
+              }
             })
-          } else {
-            this.$message({
-              message: '加入进货单失败!',
-              type: 'erro'
-            })
-            return false
-          }
-        })
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       }
     }
   },
