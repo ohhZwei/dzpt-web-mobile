@@ -13,8 +13,8 @@
         <p>挂牌时间：{{info.createDate}}</p>
       </div>
     </div>
-    <div class="back">
-        <span @click="back()"><i class="el-icon-circle-close"></i></span>
+    <div class="back" >
+        <span @click="Back()"><i class="el-icon-circle-close"></i></span>
     </div>
     </div>
      <div class="block">
@@ -39,7 +39,7 @@
             <el-button v-if="this.goodInfo.status==='MyCar'" type="primary" plain class="btn" @click="add()" disabled="">加入进货单</el-button>
             <el-button v-else type="primary" plain class="btn" @click="add()">加入进货单</el-button>
 
-            <el-button type="success" plain class="btn" >立即购买</el-button>
+            <el-button type="success" plain class="btn" @click="buy()" >立即购买</el-button>
           </el-row>
       </div>
 
@@ -85,13 +85,14 @@ export default {
         listedGoodsId: ''
       },
       buyData: {
-        buyer: '',
-        listedGoodsId: ''
+        listedGoodsId: '',
+        buyer: ''
       },
-      res1: {
-        code: '',
-        msg: ''
+      buyData1: {
+        listedGoodsId: '',
+        payChannel: ''
       },
+
       DATA: {
         sender: '',
         receiver: '',
@@ -104,7 +105,9 @@ export default {
       total: '',
       CAR: {
         userId: ''
-      }
+      },
+      mobile: '',
+      url: ''
     }
   },
   computed: {
@@ -135,6 +138,17 @@ export default {
   },
   methods: {
     ...mapActions(['goodOut', 'isGood', 'isLogin']),
+    isMobile () {
+      if (navigator.userAgent.match(/Android/i) ||
+      navigator.userAgent.match(/webOS/i) ||
+      navigator.userAgent.match(/iPhone/i) ||
+      navigator.userAgent.match(/iPad/i) ||
+      navigator.userAgent.match(/iPod/i) ||
+      navigator.userAgent.match(/BlackBerry/i) ||
+      navigator.userAgent.match(/Windows Phone/i)
+      ) return true
+      return false
+    },
 
     handleInput (e) {
       this.talkform.price = e.target.value.replace(/[^\d]/g, '')
@@ -153,25 +167,34 @@ export default {
           console.log(res.data)
           this.res1 = res.data
           if (this.res1.code === '1') {
-            this.$alert('生成订单成功！', '执行结果', {
-              confirmButtonText: '确定'
-            })
-            this.$router.push({
-              path: '/Order',
-              name: 'Order'
-            })
-          } else if (this.res1.code === 'E0006') {
-            this.$alert('进入已存在订单', '执行结果', {
-              confirmButtonText: '确定'
-            })
-            this.$router.push({
-              path: '/Order',
-              name: 'Order'
+            this.mobile = this.isMobile()
+            if (this.mobile === true) {
+              this.buyData1.payChannel = '2'
+            } else {
+              this.buyData1.payChannel = '1'
+            }
+            this.buyData1.listedGoodsId = this.goodInfo.listedGoodsId
+            console.log('this.buyData1')
+            console.log(this.buyData1)
+            this.postRequest('/bank/pay', this.buyData1).then((res) => {
+              console.log(res.data)
+              const res1 = res.data
+
+              if (res1.code === '1') {
+                this.url = res1.data.url
+                window.location = this.url
+              } else {
+                window.location = 'http://www.icbc.com.cn/ICBC/%E4%BC%81%E4%B8%9A%E4%B8%9A%E5%8A%A1/default.htm'
+
+                return false
+              }
             })
           } else {
-            this.$alert('生成订单失败！', '执行结果', {
-              confirmButtonText: '确定'
-            })
+            // this.$alert('生成订单失败！', '执行结果', {
+            //   confirmButtonText: '确定'
+            // })
+            window.location = 'http://www.icbc.com.cn/ICBC/%E4%BC%81%E4%B8%9A%E4%B8%9A%E5%8A%A1/default.htm'
+
             return false
           }
         })
@@ -190,7 +213,7 @@ export default {
         this.unit = this.info.unit
       }
     },
-    back () {
+    Back () {
       this.$router.push({
         path: '/Sell',
         name: 'Sell'
@@ -203,7 +226,7 @@ export default {
         })
         return false
       } else {
-        // 判断进货单中是否已经存在该商品
+      // 判断进货单中是否已经存在该商品
         this.isLogin()
         console.log(this.userInfo)
         this.CAR.userId = this.userInfo.userId

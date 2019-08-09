@@ -18,7 +18,7 @@
           <el-table
             :data="tableData"
             style="width: 100%"
-            max-height="20rem"
+            height="20rem"
             :align="center">
             <el-table-column
               prop="createDate"
