@@ -2,6 +2,7 @@
 <el-row :gutter="10">
   <el-col :xs="24" :lg="24">
   <div class="child1">
+    <div class='BigBOX'>
     <div class="address">
       <div class="icon">
         <el-avatar style="width:65px;height:65px;margin-top:35px;margin-left:5px" src="static/img/商品.png"></el-avatar>
@@ -11,9 +12,10 @@
         <p>商品名称：{{info.goodsName}}</p>
         <p>挂牌时间：{{info.createDate}}</p>
       </div>
-      <div class="back">
-               <span @click="back()"><i class="el-icon-circle-close"></i></span>
-      </div>
+    </div>
+    <div class="back">
+        <span @click="back()"><i class="el-icon-circle-close"></i></span>
+    </div>
     </div>
      <div class="block">
         <el-image :src=info.image style="width:200px"></el-image>
@@ -225,15 +227,22 @@ export default {
 </script>
 
 <style>
+  .BigBOX {
+    display: flex;
+    background-color: darkgrey;
+  }
   .address {
     display: flex;
     background-color: darkgrey;
     margin: 0 auto
   }
 
+  .icon {
+    margin:0 auto;
+  }
   .content {
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 15px;
     text-align: left;
   }
 
@@ -262,6 +271,9 @@ export default {
 
   .Btn {
     margin-top: 50px
+  }
+  .back{
+    margin:0 auto
   }
   .back span{
   margin-left: 50px;
