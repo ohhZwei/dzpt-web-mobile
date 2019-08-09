@@ -3,7 +3,7 @@
   <el-table
     :data="tableData"
     border
-    max-height="530"
+    height="530"
     style="width: 100%">
     <el-table-column
       prop="createDate"

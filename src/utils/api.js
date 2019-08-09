@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
-import router from '.././router'
 // 拦截请求
 axios.interceptors.request.use(config => {
   return config

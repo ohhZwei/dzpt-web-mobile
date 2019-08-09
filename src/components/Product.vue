@@ -18,7 +18,7 @@
      <div class="block">
         <el-image :src=info.image style="width:200px"></el-image>
       </div>
-    <div class="Goods" style="height:220px">
+    <div class="Goods" style="height:190px">
       <div class="details">
         <p class="text">商品名：{{info.goodsName}}</p>
         <p class="text">商品单价：¥{{info.price}}</p>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div style="height:80px">
-          <el-row class="Btn" style="margin-top:20px">
+          <el-row class="Btn" style="margin-top:5px">
             <el-button v-if="this.goodInfo.status==='MyCar'" type="primary" plain class="btn" @click="add()" disabled="">加入进货单</el-button>
             <el-button v-else type="primary" plain class="btn" @click="add()">加入进货单</el-button>
 
@@ -73,12 +73,6 @@ export default {
         amount: ''
       },
       formLabelWidth: '100px',
-      rules: {
-        price: [
-          { required: true, message: '请输入议价的期望价格', trigger: 'blur' },
-          { min: 1, message: '最小价格为1', trigger: 'blur' }
-        ]
-      },
       form: {},
       unit: '',
       params: {
@@ -190,40 +184,6 @@ export default {
         this.talkform.price = this.info.price
         this.unit = this.info.unit
       }
-    },
-    success (formName) {
-      this.DATA.sender = this.userInfo.userId
-      this.DATA.receiver = this.info.supplier
-      this.DATA.listedGoodsId = this.goodInfo.listedGoodsId
-      this.DATA.price = parseInt(this.talkform.price)
-      this.DATA.title = '议价相关商品挂牌号：' + this.goodInfo.listedGoodsId
-      this.DATA.type = '议价'
-      this.DATA.content = '期望价格：' + this.talkform.price
-      console.log(this.DATA)
-      this.postRequest('/message/negotiate', this.DATA).then((res) => {
-        this.res1 = res.data
-        console.log('1111')
-        if (this.res1.code === '1') {
-          this.$alert('发送议价消息成功！', '执行结果', {
-            confirmButtonText: '确定',
-            callback: action => {
-              this.dialogFormVisible = false
-            }
-          })
-        } else if (this.res1.code === 'E0011') {
-          this.$alert('您已议价，请勿重复议价！', '执行结果', {
-            confirmButtonText: '确定',
-            callback: action => {
-              return false
-            }
-          })
-        } else {
-          this.$alert('发送议价消息失败！', '执行结果', {
-            confirmButtonText: '确定'
-          })
-          return false
-        }
-      })
     },
     back () {
       this.$router.push({
