@@ -4,7 +4,7 @@
   <div class="child1">
     <div class="address">
       <div class="icon">
-        <el-avatar style="width:65px;height:65px;margin-top:45px" src="static/img/商品.png"></el-avatar>
+        <el-avatar style="width:65px;height:65px;margin-top:35px;margin-left:5px" src="static/img/商品.png"></el-avatar>
       </div>
       <div class="content">
         <p>挂牌单号：{{goodInfo.listedGoodsId}}</p>
@@ -227,7 +227,8 @@ export default {
 <style>
   .address {
     display: flex;
-    background-color: darkgrey
+    background-color: darkgrey;
+    margin: 0 auto
   }
 
   .content {
@@ -247,12 +248,12 @@ export default {
 
   .details {
     margin-top: 7px;
-    margin-left: 0px;
+    margin: 0 auto
   }
 
   .details2 {
     margin-top: 7px;
-    margin-left: 40px;
+    margin: 0 auto
   }
 
   .text {
