@@ -1,7 +1,7 @@
 <template>
 <el-row :gutter="10">
   <el-col :xs="24" :lg="24">
-  <div class="child1">
+  <div class="child1" v-loading="loading">
     <div class='BigBOX'>
     <div class="address">
       <div class="icon">
@@ -65,6 +65,7 @@ export default {
         postalcode: '',
         phone: ''
       },
+      loading: false,
       OrderData: {},
       src: '',
       dialogTableVisible: false,
@@ -179,22 +180,23 @@ export default {
             this.postRequest('/bank/pay', this.buyData1).then((res) => {
               console.log(res.data)
               const res1 = res.data
-
               if (res1.code === '1') {
+                this.loading = true
                 this.url = res1.data.url
                 window.location = this.url
               } else {
-                window.location = 'http://www.icbc.com.cn/ICBC/%E4%BC%81%E4%B8%9A%E4%B8%9A%E5%8A%A1/default.htm'
-
+                this.$message({
+                  message: '支付失败！',
+                  type: 'error'
+                })
                 return false
               }
             })
           } else {
-            // this.$alert('生成订单失败！', '执行结果', {
-            //   confirmButtonText: '确定'
-            // })
-            window.location = 'http://www.icbc.com.cn/ICBC/%E4%BC%81%E4%B8%9A%E4%B8%9A%E5%8A%A1/default.htm'
-
+            this.$message({
+              message: '生成订单失败！',
+              type: 'error'
+            })
             return false
           }
         })

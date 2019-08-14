@@ -47,6 +47,12 @@ export default new Router({
       path: '/MyTrading',
       name: 'MyTrading',
       component: MyTrading
+    },
+    // 我的交易
+    {
+      path: '/Order',
+      name: 'MyTrading',
+      component: MyTrading
     }
   ]
 })
